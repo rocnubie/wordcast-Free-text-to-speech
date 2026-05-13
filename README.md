@@ -1,5 +1,9 @@
 <div align="center">
 
+**English** · [简体中文](./README.zh-CN.md) · [日本語](./README.ja.md) · [Español](./README.es.md) · [Português (BR)](./README.pt-BR.md) · [한국어](./README.ko.md) · [Deutsch](./README.de.md) · [Français](./README.fr.md)
+
+<br />
+
 <a href="https://wordcast.app">
   <img src="https://wordcast.app/readme/01-hero.webp" alt="Wordcast – Free text to speech for articles, PDFs, and URLs. No signup, no upload, no character limit." width="100%" />
 </a>
@@ -32,6 +36,35 @@
 [**Open Wordcast →**](https://wordcast.app) · [Blog](https://wordcast.app/blog) · [Privacy](https://wordcast.app/privacy) · [Report a Bug](https://github.com/rocnubie/wordcast-Free-text-to-speech/issues)
 
 </div>
+
+---
+
+## Use Wordcast Now — Available in 20 Languages
+
+Open Wordcast in your language. No signup, no install — just open and press Listen.
+
+| Language | Native name | Open |
+|---|---|---|
+| 🇺🇸 English | Free Text to Speech | [**wordcast.app →**](https://wordcast.app) |
+| 🇨🇳 Chinese (Simplified) | 免费文字转语音 | [**wordcast.app/zh-CN →**](https://wordcast.app/zh-CN) |
+| 🇹🇼 Chinese (Traditional) | 免費文字轉語音 | [**wordcast.app/zh-TW →**](https://wordcast.app/zh-TW) |
+| 🇯🇵 Japanese | 無料テキスト読み上げ | [**wordcast.app/ja →**](https://wordcast.app/ja) |
+| 🇰🇷 Korean | 무료 TTS · 텍스트 읽어주기 | [**wordcast.app/ko →**](https://wordcast.app/ko) |
+| 🇪🇸 Spanish | Texto a Voz Gratis | [**wordcast.app/es →**](https://wordcast.app/es) |
+| 🇧🇷 Portuguese (Brazil) | Texto para Voz Grátis | [**wordcast.app/pt-BR →**](https://wordcast.app/pt-BR) |
+| 🇩🇪 German | Text vorlesen lassen kostenlos | [**wordcast.app/de →**](https://wordcast.app/de) |
+| 🇫🇷 French | Synthèse Vocale Gratuite | [**wordcast.app/fr →**](https://wordcast.app/fr) |
+| 🇷🇺 Russian | Бесплатный синтез речи онлайн | [**wordcast.app/ru →**](https://wordcast.app/ru) |
+| 🇸🇦 Arabic | تحويل النص إلى كلام مجاناً | [**wordcast.app/ar →**](https://wordcast.app/ar) |
+| 🇮🇳 Hindi | मुफ्त टेक्स्ट टू स्पीच | [**wordcast.app/hi →**](https://wordcast.app/hi) |
+| 🇮🇹 Italian | Sintesi Vocale Gratuita | [**wordcast.app/it →**](https://wordcast.app/it) |
+| 🇮🇩 Indonesian | Text to Speech Gratis Online | [**wordcast.app/id →**](https://wordcast.app/id) |
+| 🇹🇷 Turkish | Ücretsiz Metin Okuma | [**wordcast.app/tr →**](https://wordcast.app/tr) |
+| 🇻🇳 Vietnamese | Đọc Văn Bản Miễn Phí | [**wordcast.app/vi →**](https://wordcast.app/vi) |
+| 🇵🇱 Polish | Czytanie Tekstu na Głos za Darmo | [**wordcast.app/pl →**](https://wordcast.app/pl) |
+| 🇳🇱 Dutch | Tekst naar Spraak Gratis | [**wordcast.app/nl →**](https://wordcast.app/nl) |
+| 🇺🇦 Ukrainian | Безкоштовний синтез мовлення | [**wordcast.app/uk →**](https://wordcast.app/uk) |
+| 🇹🇭 Thai | แปลงข้อความเป็นเสียง ฟรี | [**wordcast.app/th →**](https://wordcast.app/th) |
 
 ---
 

@@ -6,9 +6,11 @@
 
 <br /><br />
 
-# wordcast-kit
+# Wordcast — Free Text to Speech
 
-**The open-source scaffold behind [Wordcast](https://wordcast.app) — free text to speech that runs entirely in your browser.**
+**Free text to speech for articles, PDFs, and URLs. Runs in your browser. No signup, no upload, no character limit.**
+
+**👉 [wordcast.app](https://wordcast.app)**
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org)
@@ -27,59 +29,68 @@
 
 <br />
 
-[🔊 **Try the live app → wordcast.app**](https://wordcast.app) · [📖 Blog](https://wordcast.app/blog) · [🔒 Privacy](https://wordcast.app/privacy) · [Report a Bug](https://github.com/rocnubie/wordcast-Free-text-to-speech/issues)
+[**Open Wordcast →**](https://wordcast.app) · [Blog](https://wordcast.app/blog) · [Privacy](https://wordcast.app/privacy) · [Report a Bug](https://github.com/rocnubie/wordcast-Free-text-to-speech/issues)
 
 </div>
 
 ---
 
-## What Is wordcast-kit?
+## About Wordcast
 
-This repository contains the reusable infrastructure extracted from **[Wordcast](https://wordcast.app)**, a free browser-based text-to-speech reader.
+**[Wordcast](https://wordcast.app) is a free text-to-speech reader for the modern web.** Paste any text, upload a PDF or Word document, or drop in a URL — Wordcast reads it aloud using the high-quality voices already installed on your device. No signup, no upload, no character limit, no AI server billing.
 
-The live product at [wordcast.app](https://wordcast.app) lets anyone **listen to PDFs, Word documents, web articles, and plain text for free** — no signup, no upload, no character limit, no AI server. It uses the **Web Speech API** already built into Chrome, Edge, and Safari to speak text aloud using the voices already installed on your device (including Apple Siri, Microsoft Natural Voices, and Google TTS voices).
+It is a complete product, used daily by readers, students, writers, language learners, and accessibility advocates around the world. The fastest way to listen to anything text-based on the open web.
 
-**wordcast-kit** packages the non-product-specific scaffold into an MIT-licensed starting point for anyone building a similar content site: UI primitives, multi-format document parsing, i18n routing, SEO metadata, JSON-LD schemas, Plausible analytics, and a Cloudflare Pages function for server-side article extraction.
+**Use Wordcast at [wordcast.app](https://wordcast.app).** No installation, no account, no setup — open the page and press Listen.
 
-> **Just want to use the free text-to-speech tool?**  
-> → Go to **[wordcast.app](https://wordcast.app)** — no installation, no account needed.
+---
+
+## What's in this repository
+
+This repository contains the **open-source portion of Wordcast's codebase** — the reusable infrastructure that makes the product work. It is the supporting layer beneath the product: UI primitives, multi-format document parsing (PDF, DOCX, EPUB, HTML, RTF, plain text), the Cloudflare Pages function that extracts readable text from any URL, i18n routing for 20 languages, SEO metadata builders, JSON-LD schema generators, and Plausible analytics integration.
+
+What you can do with this code:
+
+- Read the code that powers a production text-to-speech reader serving real users every day
+- Build a similar content site on the same proven Next.js 15 + Cloudflare Pages stack
+- Fork the document parsers, the URL extractor, the i18n setup, or the SEO helpers for your own project
+- Audit how Wordcast handles privacy (text never leaves the browser) and SSRF guards (server-side URL fetching)
+
+What is **not** in this repository: the proprietary product code — the TTS engine UI, the playback logic, the landing-page marketing sections, the blog content, and the brand assets. Those remain part of the closed product.
 
 ---
 
 ## Table of Contents
 
-- [Live Demo](#-live-demo)
-- [Why Browser-Native TTS?](#-why-browser-native-tts)
-- [Features](#-features)
-- [Supported Formats](#-supported-formats)
-- [Voice & Language Support](#-voice--language-support)
-- [Browser Support](#-browser-support)
-- [How It Works — Architecture](#-how-it-works--architecture)
-- [Wordcast vs. Speechify vs. NaturalReader](#-wordcast-vs-speechify-vs-naturalreader)
-- [Use Cases](#-use-cases)
-- [Kit Contents](#-kit-contents)
-- [Quick Start](#-quick-start)
-- [Project Structure](#-project-structure)
-- [Configuration](#-configuration)
-- [Deployment](#-deployment)
-- [FAQ](#-faq)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Wordcast in action](#wordcast-in-action)
+- [Why browser-native TTS?](#why-browser-native-tts)
+- [Features](#features)
+- [Supported formats](#supported-formats)
+- [Voice and language support](#voice-and-language-support)
+- [Browser support](#browser-support)
+- [How it works](#how-it-works)
+- [Wordcast vs. Speechify vs. NaturalReader vs. ElevenLabs](#wordcast-vs-speechify-vs-naturalreader-vs-elevenlabs)
+- [Use cases](#use-cases)
+- [What's in this repo](#whats-in-this-repo)
+- [Running the open-source code locally](#running-the-open-source-code-locally)
+- [Configuration](#configuration)
+- [Deployment](#deployment)
+- [FAQ](#faq)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## 🔊 Live Demo
+## Wordcast in action
 
-**[→ wordcast.app](https://wordcast.app)**
-
-Paste any text, upload a PDF, drop in a Word document, or enter a URL. Press **Listen** — no signup, no upload to a server, no character limit.
+Open Wordcast at **[wordcast.app](https://wordcast.app)** — paste any text and press Listen. It works on every modern browser, on desktop and mobile.
 
 <div align="center">
   <a href="https://wordcast.app">
-    <img src="https://wordcast.app/readme/02-tool-with-text.webp" alt="Wordcast free text to speech interface — paste text, choose voice, press Listen. 72-word sample loaded with Samantha voice selected." width="820" />
+    <img src="https://wordcast.app/readme/02-tool-with-text.webp" alt="Wordcast free text to speech reader — paste text, choose a voice, press Listen. 72-word sample loaded with Samantha voice selected." width="820" />
   </a>
   <br />
-  <sub>↑ Free text to speech in your browser. Paste text, pick a voice, press <strong>Listen</strong>. Try it at <a href="https://wordcast.app">wordcast.app</a>.</sub>
+  <sub>↑ Paste text, pick a voice, press <strong>Listen</strong>. Free, in your browser, at <a href="https://wordcast.app">wordcast.app</a>.</sub>
 </div>
 
 <br />
@@ -89,29 +100,29 @@ Paste any text, upload a PDF, drop in a Word document, or enter a URL. Press **L
     <img src="https://wordcast.app/readme/03-input-formats.webp" alt="Three ways to feed text into Wordcast: paste any text, upload a PDF or Word document, or fetch a web article from a URL — all processed on your device." width="820" />
   </a>
   <br />
-  <sub>↑ Three input methods: <strong>paste text</strong>, <strong>upload PDF / DOCX / EPUB / RTF / TXT / MD / HTML</strong>, or <strong>fetch any URL</strong>. All extraction runs on your device.</sub>
+  <sub>↑ Three input methods: <strong>paste text</strong>, <strong>upload PDF / DOCX / EPUB / RTF / TXT / MD / HTML</strong>, or <strong>fetch any URL</strong>. Files are parsed on your device.</sub>
 </div>
 
 ---
 
-## 🌐 Why Browser-Native TTS?
+## Why browser-native TTS?
 
 Most text-to-speech tools fall into one of two buckets:
 
-| Approach | Examples | Problems |
+| Approach | Examples | Trade-offs |
 |---|---|---|
-| **AI cloud TTS** | ElevenLabs, Murf, Play.ht | Subscription cost, uploads to a server, character limits, latency |
+| **AI cloud TTS** | ElevenLabs, Murf, Play.ht | Subscription cost, server upload, character limits, latency |
 | **Browser extension** | Speechify, Read Aloud, Helperbird | Extension install required, permission dialogs, Manifest V3 friction |
 
-**[Wordcast](https://wordcast.app) takes a third path:** the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) (available in Chrome 33+, Edge, Safari 7+, Firefox 49+) exposes the TTS voices already installed on the user's device. Nothing leaves the browser. No monthly cap. No signup.
+**[Wordcast](https://wordcast.app) takes a third path.** The [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) (available in Chrome 33+, Edge, Safari 7+, Firefox 49+) exposes the TTS voices already installed on the user's device — Apple Siri Neural voices, Microsoft Natural Voices, Google TTS voices. Nothing leaves the browser. No monthly cap. No signup.
 
 The result: **free text to speech with no character limit, no upload, and no account** — powered entirely by your device's built-in voices.
 
 ---
 
-## ✨ Features
+## Features
 
-### Core Text-to-Speech
+### Core text-to-speech
 
 - 🔊 **Free text to speech** — 100% free, forever, with no character limit
 - 🚫 **No signup required** — open [wordcast.app](https://wordcast.app) and start listening immediately
@@ -119,16 +130,16 @@ The result: **free text to speech with no character limit, no upload, and no acc
 - 🔒 **Private by design** — your text never leaves your browser
 - ⚡ **Works offline** — once the page loads, device voices work without internet
 
-### Document & Content Support
+### Document and content support
 
 - 📄 **PDF to speech** — parse PDFs entirely in-browser via `pdfjs-dist`, no upload needed
 - 📝 **Word document (DOCX) to speech** — extract clean text from `.docx` files via `mammoth`
 - 🌐 **Read any URL aloud** — enter a link; server-side Readability extraction strips ads and boilerplate
 - 📚 **EPUB reader** — unzip and read e-books in the browser
 - 📋 **Paste plain text** — no character limit, no truncation
-- 🔤 **Markdown & HTML** — `.md` and `.html` files supported
+- 🔤 **Markdown and HTML** — `.md` and `.html` files supported
 
-### Listening Experience
+### Listening experience
 
 - 🟡 **Sentence-level highlighting** — the current sentence highlights as it is spoken
 - 📜 **Auto-scroll** — follows the highlighted sentence automatically
@@ -140,16 +151,16 @@ The result: **free text to speech with no character limit, no upload, and no acc
 
 ### Accessibility
 
-- ♿ **ADHD & dyslexia friendly** — highlighting + read-aloud reduces cognitive load
-- 🌍 **Multilingual** — interface in 10 languages; voices available for 30+ languages
+- ♿ **ADHD and dyslexia friendly** — highlighting plus read-aloud reduces cognitive load
+- 🌍 **Multilingual** — interface in 20 languages; voices available for 60+ languages
 - ↔️ **RTL support** — Arabic and other RTL scripts handled correctly
 - 📱 **Mobile-first** — works on iOS Safari and Android Chrome
 
 ---
 
-## 📂 Supported Formats
+## Supported formats
 
-| Format | Extension | Parsing Location | Library |
+| Format | Extension | Parsing location | Library |
 |---|---|---|---|
 | PDF | `.pdf` | Browser (client-side) | `pdfjs-dist` |
 | Word Document | `.docx` | Browser (client-side) | `mammoth` |
@@ -160,35 +171,35 @@ The result: **free text to speech with no character limit, no upload, and no acc
 | Markdown | `.md`, `.markdown` | Browser (client-side) | Native `FileReader` |
 | Web URL | Any URL | Edge (Cloudflare Pages Function) | `@mozilla/readability` + `linkedom` |
 
-> **Privacy note:** File parsing happens entirely in your browser. Files are never sent to any server.  
+> **Privacy note:** File parsing happens entirely in your browser. Files are never sent to any server.
 > URL extraction is the only server-side operation — the server fetches the URL, strips it down to readable text, and returns only the text content. No logs are kept.
 
 ---
 
-## 🗣️ Voice & Language Support
+## Voice and language support
 
 <div align="center">
   <a href="https://wordcast.app">
     <img src="https://wordcast.app/readme/04-international-voices.webp" alt="Free text to speech in 60+ languages. Wordcast picks the matching voice automatically — United States, United Kingdom, Australia, Canada, Ireland, New Zealand, South Africa, India, Germany, and more." width="820" />
   </a>
   <br />
-  <sub>↑ Free multilingual text to speech — tap a flag, [Wordcast](https://wordcast.app) picks the matching device voice automatically.</sub>
+  <sub>↑ Free multilingual text to speech — tap a flag, <a href="https://wordcast.app">Wordcast</a> picks the matching device voice automatically.</sub>
 </div>
 
 <br />
 
 Wordcast uses voices **already installed on your device** — the same ones used by Siri, Microsoft Narrator, and Google Assistant. The quality and availability depend on your OS.
 
-### Typical voice availability by platform
+### Voice availability by platform
 
-| Platform | Voice Engines Available | Quality |
+| Platform | Voice engines available | Quality |
 |---|---|---|
 | **macOS / iOS (Safari)** | Apple Siri Neural voices (Samantha, Daniel, Karen, etc.) | ⭐⭐⭐⭐⭐ Neural |
 | **Windows (Chrome / Edge)** | Microsoft Natural Voices (Jenny, Guy, Aria, etc.) | ⭐⭐⭐⭐⭐ Neural |
 | **Android (Chrome)** | Google TTS voices | ⭐⭐⭐⭐ |
 | **Linux (Chrome / Firefox)** | eSpeak-NG, Festival, or OS-installed voices | ⭐⭐⭐ |
 
-### Languages with known high-quality device voices
+### Languages with high-quality device voices
 
 | Language | Code | Apple | Microsoft | Google |
 |---|---|---|---|---|
@@ -202,12 +213,14 @@ Wordcast uses voices **already installed on your device** — the same ones used
 | Portuguese | `pt-BR` | ✅ | ✅ Neural | ✅ |
 | Arabic | `ar-SA` | ✅ | ✅ Neural | ✅ |
 | Russian | `ru-RU` | ✅ | ✅ Neural | ✅ |
+| Chinese | `zh-CN`, `zh-TW` | ✅ | ✅ Neural | ✅ |
+| Italian | `it-IT` | ✅ | ✅ Neural | ✅ |
 
-> The voice picker at [wordcast.app](https://wordcast.app) shows every voice available on your specific device in real time.
+The voice picker at [wordcast.app](https://wordcast.app) shows every voice available on your specific device in real time.
 
 ---
 
-## 🌍 Browser Support
+## Browser support
 
 | Browser | Platform | TTS | Highlighting | Notes |
 |---|---|---|---|---|
@@ -218,46 +231,46 @@ Wordcast uses voices **already installed on your device** — the same ones used
 | **Samsung Internet** | Android | ✅ | ✅ | |
 | **Opera** | Desktop | ✅ | ✅ | Chromium-based |
 
-> The codebase includes a `getVoices()` polling workaround for Chrome's 14-second async voice load and Safari's synchronous-but-delayed variant.
+The codebase includes a `getVoices()` polling workaround for Chrome's 14-second async voice load and Safari's synchronous-but-delayed variant.
 
 ---
 
-## 🏗️ How It Works — Architecture
+## How it works
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        User's Browser                           │
+│                        User's browser                           │
 │                                                                 │
 │  ┌──────────────┐   ┌─────────────────┐   ┌─────────────────┐  │
-│  │  Input Layer  │   │  Parsing Layer  │   │   TTS Engine    │  │
-│  │               │   │                 │   │                 │  │
-│  │  • Paste text │──▶│  lib/input/     │──▶│  Web Speech API │  │
-│  │  • Drop file  │   │  • pdfjs-dist   │   │                 │  │
-│  │  • Enter URL  │   │  • mammoth      │   │  Device voices  │  │
+│  │  Input layer │   │  Parsing layer  │   │   TTS engine    │  │
+│  │              │   │                 │   │                 │  │
+│  │  • Paste text│──▶│  lib/input/     │──▶│  Web Speech API │  │
+│  │  • Drop file │   │  • pdfjs-dist   │   │                 │  │
+│  │  • Enter URL │   │  • mammoth      │   │  Device voices  │  │
 │  └──────────────┘   │  • jszip/epub   │   │  (Siri / MS /   │  │
-│                      │  • DOM parser   │   │   Google TTS)   │  │
-│                      └────────┬────────┘   └────────┬────────┘  │
-│                               │                     │           │
-│                      ┌────────▼────────┐   ┌────────▼────────┐  │
-│                      │  Text Normalize  │   │  Highlighting   │  │
-│                      │  lib/input/     │   │  + AutoScroll   │  │
-│                      │  normalize.ts   │   │  + MediaSession │  │
-│                      └─────────────────┘   └─────────────────┘  │
+│                     │  • DOM parser   │   │   Google TTS)   │  │
+│                     └────────┬────────┘   └────────┬────────┘  │
+│                              │                     │           │
+│                     ┌────────▼────────┐   ┌────────▼────────┐  │
+│                     │ Text normalize  │   │  Highlighting   │  │
+│                     │ lib/input/      │   │  + AutoScroll   │  │
+│                     │ normalize.ts    │   │  + MediaSession │  │
+│                     └─────────────────┘   └─────────────────┘  │
 └───────────────────────────────┬─────────────────────────────────┘
                                 │ URL only
                                 │
-                    ┌───────────▼───────────┐
-                    │  Cloudflare Pages Fn   │
-                    │  functions/api/        │
-                    │  extract.ts            │
+                    ┌───────────▼────────────┐
+                    │ Cloudflare Pages Fn    │
+                    │ functions/api/         │
+                    │ extract.ts             │
                     │                        │
-                    │  @mozilla/readability  │
-                    │  + SSRF guards         │
-                    │  + size limits         │
+                    │ @mozilla/readability   │
+                    │ + SSRF guards          │
+                    │ + size limits          │
                     └────────────────────────┘
 ```
 
-**Key design decisions:**
+Key design decisions behind Wordcast:
 
 1. **Files never leave the browser.** PDF, DOCX, EPUB, RTF, HTML, and plain text are parsed using browser-side WASM and JavaScript. No bytes are uploaded.
 2. **URL extraction is the only server call.** The Cloudflare Pages Function fetches the URL, runs Readability, and returns plain text. No content is stored or logged.
@@ -266,16 +279,16 @@ Wordcast uses voices **already installed on your device** — the same ones used
 
 ---
 
-## 📊 Wordcast vs. Speechify vs. NaturalReader vs. ElevenLabs
+## Wordcast vs. Speechify vs. NaturalReader vs. ElevenLabs
 
-> Want to skip the comparison and just start listening? → **[wordcast.app](https://wordcast.app)**
+> Open Wordcast directly: **[wordcast.app](https://wordcast.app)**
 
 <div align="center">
   <a href="https://wordcast.app">
-    <img src="https://wordcast.app/readme/05-comparison-table.webp" alt="Comparison table: Wordcast vs ElevenLabs / OpenAI TTS vs Speechify / NaturalReader vs browser extension readers. Wordcast is free forever, no signup, no character cap, text never leaves your device." width="820" />
+    <img src="https://wordcast.app/readme/05-comparison-table.webp" alt="Comparison: Wordcast vs ElevenLabs / OpenAI TTS vs Speechify / NaturalReader vs browser extension readers. Wordcast is free forever, no signup, no character cap, text never leaves your device." width="820" />
   </a>
   <br />
-  <sub>↑ Side-by-side feature comparison. See the full breakdown at <a href="https://wordcast.app">wordcast.app</a>.</sub>
+  <sub>↑ Feature-by-feature comparison. See the full breakdown at <a href="https://wordcast.app">wordcast.app</a>.</sub>
 </div>
 
 <br />
@@ -293,87 +306,86 @@ Wordcast uses voices **already installed on your device** — the same ones used
 | **Sentence highlighting** | ✅ | ✅ Premium | ✅ Premium | ✅ |
 | **AI neural voices** | Device voices | ✅ Premium | ✅ Premium | ❌ |
 | **Offline capable** | ✅ | ❌ | ❌ | ❌ |
-| **Open source** | ✅ (this repo) | ❌ | ❌ | ❌ |
-| **Browser extension** | ❌ (no install) | ✅ | ❌ | ❌ |
+| **Browser extension required** | ❌ (just open the site) | ✅ | ❌ | ❌ |
 | **Price** | **Free** | $139/yr | $99/yr | Free |
 
-> Note: Feature availability varies by platform version and may change over time. Last updated May 2026.
+> Feature availability varies by platform version and may change over time. Last updated May 2026.
 
-**When to use [Wordcast](https://wordcast.app) instead of Speechify or NaturalReader:**
+**When [Wordcast](https://wordcast.app) is the right choice:**
 
-- You want a **free text-to-speech tool with no signup**
+- You want **free text to speech with no signup**
 - You want to **read a PDF aloud without uploading it** to a third-party server
 - You want **no character limit** on pasted text
 - You're on a school or work network that blocks extension installs
-- You care about **privacy** (your text never leaves your device)
-- You need a **free Speechify alternative** for occasional use
+- You care about **privacy** — your text never leaves your device
+- You need a **free Speechify alternative** for occasional or heavy use
 
 ---
 
-## 🎯 Use Cases
+## Use cases
 
 ### 👩‍🎓 Students
 
 Read textbooks, research papers, and lecture notes aloud while commuting. Paste the text or upload the PDF — [Wordcast](https://wordcast.app) reads it back with sentence-level highlighting. No account needed, no subscription, works on school Chromebooks.
 
-**Keywords:** *free text to speech for students, convert PDF to audio free, listen to academic papers, text to speech for studying*
+*Keywords: free text to speech for students, convert PDF to audio free, listen to academic papers, text to speech for studying.*
 
 ---
 
-### 🧠 ADHD & Dyslexia Support
+### 🧠 ADHD and dyslexia support
 
 Sentence-level highlighting combined with audio playback significantly reduces the cognitive load of reading for people with ADHD or dyslexia. [Wordcast](https://wordcast.app) is a free, browser-based alternative to expensive assistive technology subscriptions.
 
-**Keywords:** *free text to speech for ADHD, text to speech for dyslexia, read aloud tool accessibility, assistive technology TTS free*
+*Keywords: free text to speech for ADHD, text to speech for dyslexia, read aloud tool accessibility, assistive technology TTS free.*
 
 ---
 
-### 🌐 Language Learners
+### 🌐 Language learners
 
 Use a native speaker's voice (Siri French, Microsoft Jenny Spanish) to hear correct pronunciation while following along with the highlighted text. No extension required, works on any device.
 
-**Keywords:** *text to speech language learning, multilingual TTS browser, hear correct pronunciation free*
+*Keywords: text to speech language learning, multilingual TTS browser, hear correct pronunciation free.*
 
 ---
 
-### ✍️ Writers & Proofreaders
+### ✍️ Writers and proofreaders
 
 Listening to your own writing catches errors that silent proofreading misses. Paste a draft, press Listen, and hear it read back in your chosen voice and speed. The **no character limit** means entire manuscripts work without splitting.
 
-**Keywords:** *text to speech for proofreading, listen to your writing, free TTS for writers, no character limit*
+*Keywords: text to speech for proofreading, listen to your writing, free TTS for writers, no character limit.*
 
 ---
 
-### 📰 Commuters & Busy Readers
+### 📰 Commuters and busy readers
 
 Turn any web article into an audio session — paste the URL, press Listen, lock your phone. Lock-screen Media Session controls let you pause and skip without unlocking.
 
-**Keywords:** *listen to articles free, read aloud browser, convert article to audio, text to speech while commuting*
+*Keywords: listen to articles free, read aloud browser, convert article to audio, text to speech while commuting.*
 
 ---
 
-### 🎬 Content Creators
+### 🎬 Content creators
 
 Generate voiceover scratch tracks for YouTube videos or podcasts using high-quality device voices. Export your script, paste it into [Wordcast](https://wordcast.app), and record your screen audio. No monthly plan, no per-character API billing.
 
-**Keywords:** *free text to speech for YouTube, TTS for content creators, free voice over tool, no subscription TTS*
+*Keywords: free text to speech for YouTube, TTS for content creators, free voice over tool, no subscription TTS.*
 
 ---
 
-### ♿ Accessibility Advocates
+### ♿ Accessibility advocates
 
-[Wordcast](https://wordcast.app) works out of the box with screen readers, keyboard-only navigation, and system-level assistive technology. The `HtmlLangSync` component ensures `<html lang>` and `dir` attributes are always correct for multilingual screen reader support.
+[Wordcast](https://wordcast.app) works out of the box with screen readers, keyboard-only navigation, and system-level assistive technology. Multilingual `<html lang>` and `dir` attributes are set correctly for screen readers on every locale.
 
-**Keywords:** *free accessible TTS tool, WCAG text to speech, browser TTS accessibility*
+*Keywords: free accessible TTS tool, WCAG text to speech, browser TTS accessibility.*
 
 ---
 
-## 📦 Kit Contents
+## What's in this repo
 
-This repository is the open-source scaffold, not the full product. What's here:
+The open-source portion of Wordcast's codebase. Reusable infrastructure that's been battle-tested in production:
 
 ```
-wordcast-kit/
+.
 ├── components/
 │   ├── ui/                    # Radix-based primitives
 │   │   ├── button.tsx         # CVA-powered button with variants
@@ -382,7 +394,7 @@ wordcast-kit/
 │   │   ├── sheet.tsx          # Slide-in drawer (bottom/right)
 │   │   ├── slider.tsx         # Range slider
 │   │   └── switch.tsx         # Toggle switch
-│   ├── Logo.tsx               # Placeholder mark — swap for your brand
+│   ├── Logo.tsx               # Placeholder mark
 │   ├── SiteHeader.tsx         # Sticky header with logo + language switcher
 │   ├── SiteFooter.tsx         # Footer with nav + language switcher
 │   ├── LanguageSwitcher.tsx   # Popover: flag, native name, current locale
@@ -394,7 +406,7 @@ wordcast-kit/
 ├── lib/
 │   ├── utils.ts               # cn() — clsx + tailwind-merge
 │   ├── seo.ts                 # buildPageMetadata(), buildAlternates()
-│   ├── jsonld.ts              # WebSite/Article/FAQ/HowTo/Breadcrumb schemas
+│   ├── jsonld.ts              # WebSite / Article / FAQ / HowTo / Breadcrumb schemas
 │   ├── analytics.ts           # Generic Plausible track() wrapper
 │   └── input/
 │       ├── types.ts           # ExtractedContent, SourceMeta types
@@ -421,7 +433,7 @@ wordcast-kit/
 │                              # Includes: SSRF guards, size cap, timeout,
 │                              # content-type validation, Readability parsing
 │
-├── site.config.ts             # Brand identity — name, URL, locales, Plausible
+├── site.config.ts             # Brand identity placeholder
 ├── next.config.mjs            # Static export + next-intl plugin
 ├── tsconfig.json              # Strict TypeScript, path aliases
 ├── eslint.config.mjs          # Flat config: next/core-web-vitals + typescript
@@ -431,19 +443,19 @@ wordcast-kit/
 └── LICENSE                    # MIT
 ```
 
-**What's NOT in this repo** (these belong to the product layer):
+What is **not** in this repository (proprietary product code):
 
 - `app/` — branded pages and layouts
 - `components/tts/` — the TTS UI: ListenButton, MiniPlayer, SettingsDrawer, VoicePicker
 - `lib/tts/` — TTS hook, settings store, Media Session integration
-- `components/sections/` — landing page marketing sections
+- `components/sections/` — landing-page marketing sections
 - `content/blog/` — blog posts
 - `messages/` — translation strings
 - `public/` — brand assets
 
 ---
 
-## 🚀 Quick Start
+## Running the open-source code locally
 
 ```bash
 # 1. Clone
@@ -467,7 +479,9 @@ pnpm dev              # http://localhost:3000
 pnpm dev:cf           # http://localhost:8788
 ```
 
-### What you need to add before it boots
+### What you need to add to boot a site on top of this code
+
+This repo is the infrastructure layer, not a full site. To run a site on top of it, add:
 
 1. **`app/layout.tsx`** — root layout; import `SiteHeader`, `SiteFooter`, `PlausibleScript`
 2. **`app/page.tsx`** — home page
@@ -477,7 +491,7 @@ pnpm dev:cf           # http://localhost:8788
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 All brand identity lives in a single file:
 
@@ -490,7 +504,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
   twitterHandle: "@yourhandle",
   defaultLocale: "en",
-  locales: ["en", "es", "fr"] as const,   // add BCP-47 codes here
+  locales: ["en", "es", "fr"] as const,
   plausible: {
     domain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "",
     scriptUrl: process.env.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL || "https://plausible.io/js/script.js",
@@ -533,9 +547,9 @@ Components reference these semantic tokens — define them in `globals.css` unde
 
 ---
 
-## ☁️ Deployment
+## Deployment
 
-The kit is pre-configured for **Cloudflare Pages** with a static export:
+The code is pre-configured for **Cloudflare Pages** with a static export:
 
 ```bash
 pnpm build       # outputs to ./out
@@ -553,52 +567,52 @@ pnpm build       # outputs to ./out
 
 The `functions/api/extract.ts` file is automatically picked up as a **Cloudflare Pages Function** — no extra configuration required.
 
-**Other static hosts** (Vercel, Netlify, GitHub Pages) work too. For Vercel/Netlify you may want to swap `output: "export"` for their native adapters to get edge functions.
+Other static hosts (Vercel, Netlify, GitHub Pages) work too. For Vercel/Netlify you may want to swap `output: "export"` for their native adapters to get edge functions.
 
 ---
 
-## ❓ FAQ
+## FAQ
 
 <div align="center">
   <a href="https://wordcast.app#faq">
     <img src="https://wordcast.app/readme/06-faq.webp" alt="Wordcast FAQ — Is Wordcast really free? Can Wordcast read PDFs aloud for free? Is there a character limit? How is Wordcast different from ElevenLabs, OpenAI TTS, or Speechify?" width="820" />
   </a>
   <br />
-  <sub>↑ See the full FAQ at <a href="https://wordcast.app#faq">wordcast.app</a>.</sub>
+  <sub>↑ Full FAQ at <a href="https://wordcast.app#faq">wordcast.app</a>.</sub>
 </div>
 
 <br />
 
-**Q: Does Wordcast send my text to a server?**  
+**Q: Does Wordcast send my text to a server?**
 A: No. Files (PDF, DOCX, EPUB, TXT, HTML, RTF) are parsed entirely in your browser. Text synthesis happens via the Web Speech API on your device. The only server call is for URL extraction — the server fetches the URL and returns the cleaned text, but does not store it. See [wordcast.app/privacy](https://wordcast.app/privacy).
 
-**Q: Is this free to use? Is there a character limit?**  
+**Q: Is Wordcast free? Is there a character limit?**
 A: [Wordcast](https://wordcast.app) is 100% free with no character limit. Paste an entire book if you want.
 
-**Q: Do I need to create an account?**  
+**Q: Do I need to create an account?**
 A: No. Open [wordcast.app](https://wordcast.app) and start listening immediately.
 
-**Q: How good are the free voices?**  
-A: On macOS/iOS, you get Apple's Neural Siri voices. On Windows with Edge or Chrome, you get Microsoft Natural Voices (Jenny, Guy, Aria, etc.) — these are genuinely high-quality neural voices, the same ones used in Azure TTS, available for free because they're baked into your OS.
+**Q: How good are the free voices?**
+A: On macOS/iOS, you get Apple's Neural Siri voices. On Windows with Edge or Chrome, you get Microsoft Natural Voices (Jenny, Guy, Aria, etc.) — these are high-quality neural voices, the same ones used in Azure TTS, available for free because they're baked into your OS.
 
-**Q: Does it work offline?**  
+**Q: Does Wordcast work offline?**
 A: Yes, for local files and pasted text. Once the page has loaded, the Web Speech API synthesizes audio locally. URL extraction requires internet (to fetch the URL), but everything else is offline-capable.
 
-**Q: What's the difference between this repo and wordcast.app?**  
-A: [wordcast.app](https://wordcast.app) is the full product. This repo (`wordcast-kit`) contains only the reusable infrastructure — UI primitives, document parsers, i18n, SEO helpers — extracted as a clean starting point for other projects. The TTS engine, player UI, and branded landing page are not included.
+**Q: What's the difference between this repo and wordcast.app?**
+A: [wordcast.app](https://wordcast.app) is the product. This repo contains the open-source portion of its codebase — the reusable infrastructure (UI primitives, document parsers, i18n, SEO helpers, URL extractor). The TTS engine, player UI, and branded landing page are part of the closed product.
 
-**Q: Can I use the Web Speech API in Firefox?**  
+**Q: Can I use the Web Speech API in Firefox?**
 A: Yes, since Firefox 49. Firefox uses OS-level voices (on Linux: eSpeak-NG or Festival; on macOS/Windows: same neural voices as Chrome). Quality varies by platform.
 
-**Q: Why not use the ElevenLabs or OpenAI TTS API instead?**  
-A: You can, and the input parsing layer in this kit works as a standalone module regardless of the synthesis backend. The live [Wordcast](https://wordcast.app) app uses the Web Speech API specifically because it makes the product free with no character limits and fully private. AI API-based TTS would require a subscription and would send text to a third-party server.
+**Q: Why not use the ElevenLabs or OpenAI TTS API instead?**
+A: You can, and the input parsing layer in this repo works as a standalone module regardless of the synthesis backend. [Wordcast](https://wordcast.app) uses the Web Speech API specifically because it makes the product free, with no character limits, and fully private. AI API-based TTS would require a subscription and would send text to a third-party server.
 
-**Q: Is this a Speechify alternative?**  
-A: As a free, browser-based tool for reading articles, PDFs, and documents aloud, [Wordcast](https://wordcast.app) covers the core use case of Speechify's free tier and more — with no account, no upload, and no character limit. It doesn't have AI voice cloning or a mobile app.
+**Q: Is Wordcast a Speechify alternative?**
+A: As a free, browser-based reader for articles, PDFs, and documents, [Wordcast](https://wordcast.app) covers the core use case of Speechify's free tier and more — with no account, no upload, and no character limit. It doesn't have AI voice cloning or a mobile app.
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests are welcome. For larger changes, open an issue first to discuss the direction.
 
@@ -618,7 +632,7 @@ Areas where contributions are most valuable:
 
 ---
 
-## 📄 License
+## License
 
 [MIT](./LICENSE) — free to use, fork, and build on.
 
@@ -626,13 +640,13 @@ Areas where contributions are most valuable:
 
 <div align="center">
 
-**Built for [Wordcast](https://wordcast.app) — free text to speech for PDFs, articles, and URLs.**
+**[Wordcast](https://wordcast.app) — free text to speech for PDFs, articles, and URLs.**
 
-[Try it now →](https://wordcast.app) · [Blog](https://wordcast.app/blog) · [Privacy Policy](https://wordcast.app/privacy)
+[Open Wordcast →](https://wordcast.app) · [Blog](https://wordcast.app/blog) · [Privacy](https://wordcast.app/privacy)
 
 <br />
 
-*Wordcast is free text to speech that runs in your browser — no signup, no upload, no character limit.*  
+*Wordcast is free text to speech that runs in your browser — no signup, no upload, no character limit.*
 *Read PDFs, Word documents, web articles, and plain text aloud using the voices already on your device.*
 
 </div>
